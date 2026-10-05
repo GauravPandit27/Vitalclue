@@ -1,4 +1,4 @@
-opencv-python
+opencv-python-headless
 mediapipe>=1.0          # uses the Tasks API; mediapipe.solutions was removed in 1.0
 numpy
 scipy
