@@ -30,10 +30,16 @@ class RelaxationAgent:
         # a scripted cue below if no key is configured, so the app still runs offline.
         self.client = anthropic.Anthropic() if anthropic else None
         
-        # TTS Engine Setup
-        self.tts_engine = pyttsx3.init() if pyttsx3 else None
-        if self.tts_engine:
-            self.tts_engine.setProperty('rate', 150)
+        # TTS Engine Setup — pyttsx3 needs a platform TTS backend (espeak on Linux,
+        # SAPI5 on Windows).  On headless servers (e.g. Streamlit Cloud) it is rarely
+        # available, and server-side audio cannot reach the browser anyway, so fail
+        # gracefully.
+        try:
+            self.tts_engine = pyttsx3.init() if pyttsx3 else None
+            if self.tts_engine:
+                self.tts_engine.setProperty('rate', 150)
+        except Exception:
+            self.tts_engine = None
         self.is_speaking = False
 
     def speak(self, text: str):
