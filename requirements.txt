@@ -1,0 +1,12 @@
+opencv-python
+mediapipe>=1.0          # uses the Tasks API; mediapipe.solutions was removed in 1.0
+numpy
+scipy
+streamlit>=1.49         # charts use width="stretch"; use_container_width is deprecated
+pandas
+altair
+matplotlib              # only for tools/validate.py diagnose --plot
+anthropic
+pyttsx3
+torch                   # rPPG heart rate only; CPU wheel is fine
+truststore              # lets model downloads use the OS trust store behind TLS proxies

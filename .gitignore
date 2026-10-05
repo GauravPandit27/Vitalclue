@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+
+# Downloaded on first run by core.vision / core.heart_rate
+models/*.task
+models/*.tflite
+models/*.pth
+
+# Only created when session logging is explicitly enabled
+vitalcue.db
+validation_results.csv
+validation_traces/
+trace_diagnosis.png
+
+# Virtual environment
+.venv/
